@@ -108,7 +108,7 @@ for (i in depart:length(file)) { # # we iterate on the files
   }
   #data <- data[complete.cases(data),]
   # write the csv for the given file 
-  write.csv(data, paste0("interm/data",time,".csv")) 
+  write.csv(data, paste0(dir,"interm/data",time,".csv")) 
   
 }
 
