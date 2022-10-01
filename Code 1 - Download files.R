@@ -22,6 +22,7 @@ library(rvest)
 library(httr)
 
 ########## Find the document to download 
+download_time = Sys.time()
 
 # We create the list where we will store the indexes of the files 
 charter = list()
@@ -54,7 +55,7 @@ lapply(charter, BROWSE, paste0("https://m.box.com/file/", charter, "/download?sh
 
 dir = "C:/Users/davim/Downloads"
 
-files = dir()[grep(".nc", dir())] # or file.mtime(dir())[file.mtime(dir() %in% Sys.Date())] if they are the only files downloaded today
+files = dir()[grep(".nc", dir())] # or dir()[file.mtime(dir()) > download_time] # to find only the recently downloaded files
 
 lapply(files, file.copy,from = dir, to = tempdir()) # to put all the files in the temporary directory linked to this session
 lapply(files, file.remove) # to delete them from the computer 
